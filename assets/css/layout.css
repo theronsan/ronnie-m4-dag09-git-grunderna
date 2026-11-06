@@ -77,9 +77,9 @@ nav ul {
     }
 
     /* Sista meny-item ska sträcka sig över två kolumner */
-    .meny-item:last-child {
+    /* .meny-item:last-child {
         grid-column: span 2;
-    }
+    } */
 }
 
 @media (min-width: 900px) {
@@ -111,9 +111,9 @@ nav ul {
     }
 
     /* Återställ sista meny-item */
-    .meny-item:last-child {
+    /* .meny-item:last-child {
         grid-column: span 1;
-    }
+    } */
 
     /* Mer padding i hero */
     #hero {
