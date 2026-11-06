@@ -1,0 +1,142 @@
+/*
+Kort
+Knappar
+Formulär
+*/
+
+/* KORT */
+article {
+    background-color: var(--color-background-card);
+    border: 1px solid var(--color-border-card);
+    border-radius: var(--radius-card);
+    padding: var(--space-normal);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Steg 5 Experimentera
+    JUSTIFY CONTENT
+    justify-content: center;
+    justify-content: flex-end;
+    justify-content: space-around;
+    Det blir ingen skillnad. Jag måste göra föräldren .meny-lista till en flexbehållare för att justify-content ska kunna påverka article-elementet.)
+
+    ALIGN-ITEMS
+    align-items: center (det gör att texten i article blir centrerad)
+    align-items: flex-end (det gör att texten i article blir högerjusterad)
+    */
+}
+/* Boxmodellen för en article, från vänster till höger (horisontellt):
+
+margin 0 | border 1 | padding 16 | content 1034 | padding 16 | border 1 | margin 0
+
+*/
+article img {
+    border-radius: var(--radius-image);
+}
+
+.meny-lista {
+    margin-top: var(--space-normal);
+    /* Gör meny-listan till en flexbehållare så att article .meny-item ligger på en rad på större skärmar.
+    Detta gör att nu kan man även se att priset justeras mot artikelns botten. */
+    /* display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem; */
+
+    /* Skapa en grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-normal);
+}
+
+.meny-item {
+    /* flex: 1 1 240px; */
+    transition:
+        scale 300ms ease-in-out,
+        box-shadow 300ms ease-in-out,
+        border-color 300ms ease-in-out;
+}
+.meny-item:hover {
+    scale: 1.03;
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Motivering av valet mellan Flexbox och Grid:
+    Eftersom rubriken ska täcka båda kolumnerna,
+    texten ska ligga i den vänstra kolumen,
+    och bilden i den högra kolumnen,
+    passar det bra att använda grid eftersom det går att styra
+    placeringen i två dimensioner (horisontellt och vertikalt).
+*/
+#om-oss img {
+    border-radius: var(--radius-image);
+}
+
+/***** KNAPPAR *****/
+.knapp,
+input[type='submit'] {
+    display: inline-block;
+    color: var(--color-text-button); /* Kontrast mot background: 9.56 AAA */
+    background-color: var(--color-background-button);
+    padding: 12px 20px;
+    margin-top: var(--space-normal);
+    border-radius: var(--radius-button);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+.knapp:hover,
+input[type='submit']:hover {
+    color: var(
+        --color-text-button
+    ); /* Kontrast mot hover background: 12.11 AAA */
+    background-color: var(--color-background-button-hover);
+}
+.knapp:active,
+input[type='submit']:active {
+    transform: scale(0.97);
+}
+/* Jag lägger inte in en :focus-visible på knapp-klassen eftersom den redan får den stilen från a-elementet */
+
+/***** FORMULÄR *****/
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='date'],
+input[type='number'],
+select,
+textarea {
+    width: 100%;
+    max-width: 28rem;
+    padding: 10px 12px;
+    border: 2px solid var(--color-border-form);
+    border-radius: var(--radius-form);
+    font: inherit;
+    background-color: var(--color-background-input);
+}
+label {
+    font-weight: 700;
+    display: block;
+    margin-top: var(--space-normal);
+}
+fieldset {
+    margin-top: var(--space-large);
+    padding: var(--space-medium);
+    border: 2px solid var(--color-border-form);
+    border-radius: var(--radius-form);
+    max-width: 28rem;
+}
+fieldset legend {
+    font-weight: 700;
+    padding: 0 var(--space-normal);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-small);
+    margin-bottom: var(--space-small);
+}
+.checkbox-group label {
+    margin-top: 0;
+}
